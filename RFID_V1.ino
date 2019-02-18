@@ -82,23 +82,22 @@ void loop() {
     rfid.concat(String(mfrc522.uid.uidByte[i], HEX));
   }
 
-  // TODO: Store New entry dynamically
+  boolean present_flag = false;
+  Serial.println();
+  Serial.print("No of unique entries:");
+  Serial.print(count);
   Serial.println();
   for (int k = 0; k <= count; k++) {
-    Serial.print(count);
-    if(uRFID[k]!=rfid){
-      Serial.print("NEW");
-      uRFID[count] = rfid;
-      count++;
-      return;
+    if(uRFID[k]==rfid){
+      present_flag = true;
     }
-    else{
-      Serial.print("OLD");
-      return;
-    }
-    
   }
 
   
-  
+  if(!present_flag){
+    Serial.println();
+    Serial.print("NEW CARD");
+    uRFID[count] = rfid;
+    count++;
+    }    
 }
