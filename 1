@@ -1,0 +1,66 @@
+#!/usr/bin/python2.7
+
+import serial, time
+import os
+import subprocess as sub
+import serial_def as sd
+
+SERIALPORT = "/dev/ttyUSB0"
+BAUDRATE = 115200
+
+mere_items = []
+
+#sub.run(["sudo","chmod","777","/dev/ttyUSB*"])
+sub.run('sudo chmod 777 /dev/ttyUSB*',shell=True)
+#exit()
+#TODO serial port exact
+
+ser = serial.Serial(SERIALPORT,BAUDRATE)
+ser.bytesize = serial.EIGHTBITS
+ser.parity = serial.PARITY_NONE
+ser.stopbits = serial.STOPBITS_ONE
+ser.timeout =0
+ser.xonxoff = False
+ser.rtscts = False
+ser.dsrdtr = False
+ser.writeTimeout = 0
+
+print ("Initialising Serial Monitor on ",SERIALPORT," at ",BAUDRATE)
+
+if not ser.isOpen():
+    try:
+        ser.open()
+
+    except Exception as e:
+        print ("Error opening serial port :" +str(e))
+        #print ("Exiting...")
+        #exit()
+
+tag_list_full = []
+tag_list_final = []
+tag_count_full = 0
+
+if ser.isOpen():
+    time.sleep(0.3)
+    try:
+        ser.flushInput()
+        ser.flushOutput()
+
+        time.sleep(0.2)
+        for i in range(18):
+            tag_list,tag_count = sd.real_time_inventory(ser,1)
+            for j in tag_list:
+                tag_list_full.append(j)
+            
+            #tag_count_full += tag_count
+
+        tag_list_final = list(set(tag_list_full))
+        tag_count_full = len(tag_list_final)
+        print("Tag list =", tag_list_final)
+        print("Tag count =", tag_count_full)
+
+    except Exception as e:
+        print("Error in communication : ",e)
+
+else:
+    print ("Could not open serial port")

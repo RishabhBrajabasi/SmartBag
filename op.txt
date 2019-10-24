@@ -1,0 +1,64 @@
+____________________________________________________
+2019-01-15 15:00:00
+GHC- 4102
+<icalendar.prop.vDDDTypes object at 0x7f324de5d710>
+vRecur({u'BYDAY': [u'TU', u'TH'], u'FREQ': [u'WEEKLY'], u'UNTIL': [datetime.date(2019, 5, 5)]})
+None
+None
+Building User-Focused Sensing Systems :: 17722 A
+
+Instructors: Agarwal; Goel
+
+<icalendar.prop.vDDDTypes object at 0x7f324c38a210>
+<icalendar.prop.vDDDTypes object at 0x7f324c1dc510>
+Building User-Focused Sensing Systems :: 17722 A
+
+
+____________________________________________________
+2019-01-15 10:30:00
+PH- 226B
+<icalendar.prop.vDDDTypes object at 0x7f324c357250>
+vRecur({u'BYDAY': [u'TU', u'TH'], u'FREQ': [u'WEEKLY'], u'UNTIL': [datetime.date(2019, 5, 5)]})
+None
+None
+Networked Cyber-Physical Systems :: 18651 A
+
+Instructor: Marculescu
+
+<icalendar.prop.vDDDTypes object at 0x7f324c1dc590>
+<icalendar.prop.vDDDTypes object at 0x7f324c1dc5d0>
+Networked Cyber-Physical Systems :: 18651 A
+
+
+____________________________________________________
+2019-01-14 15:30:00
+WEH- 5312
+<icalendar.prop.vDDDTypes object at 0x7f324c1dc610>
+vRecur({u'BYDAY': [u'MO', u'WE'], u'FREQ': [u'WEEKLY'], u'UNTIL': [datetime.date(2019, 5, 5)]})
+None
+None
+Wireless Sensor Networks :: 18748 A
+
+Instructor: Rajkumar
+
+<icalendar.prop.vDDDTypes object at 0x7f324c1dc650>
+<icalendar.prop.vDDDTypes object at 0x7f324c1dc690>
+Wireless Sensor Networks :: 18748 A
+
+
+____________________________________________________
+2019-01-20 10:00:00
+HL- A5
+<icalendar.prop.vDDDTypes object at 0x7f324c1dc6d0>
+vRecur({u'BYDAY': [u'SU'], u'FREQ': [u'WEEKLY'], u'UNTIL': [datetime.date(2019, 3, 6)]})
+None
+None
+IDeATe: 3D Modeling and 3D Printing :: 99359 A3
+
+Instructor: Lyness
+
+<icalendar.prop.vDDDTypes object at 0x7f324c1dc710>
+<icalendar.prop.vDDDTypes object at 0x7f324c1dc750>
+IDeATe: 3D Modeling and 3D Printing :: 99359 A3
+
+

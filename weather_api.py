@@ -2,7 +2,7 @@
 # Project: Smart Bag
 # Author: Rishabh Brajabasi
 # Date: 28/02/2019
-
+import os
 import requests
 import json
 import datetime
@@ -22,33 +22,63 @@ json_data = requests.get(forecast_api_address).json()
 #print(str(currentDT))
 #print(str(dayPlusOne))
 
-# Jacket | Umberella | Bottle | Box | Folder_1 | Folder_2 | Folder_3
+# Jacket | Umbrella | Bottle | Box | Folder_1 | Folder_2 | Folder_3
+pathON = '/home/pi/ObjectsNeeded.txt'
 objectsNeeded = [0,0,0,0,0,0,0]
 print(objectsNeeded)
 
+def addObject(str):
+    on = open(pathON, 'a+')
+    contents = on.read()
+    print(contents)
+    listContents = contents.split('|')[:-1];
+    if(str in listContents):
+        print("Nothing to add")
+    else:
+        on.write(str+"|")
+    print(listContents)
+
 #for dh in range(0,len(json_data["list"])):
-for dh in range(0, 4):
+def weather():
+    for dh in range(0, 4):
 #    if(json_data.get("list")[dh].get("main").get("temp")) is not None:
 #        print(json_data.get("list")[dh].get("main").get("temp"))
 
-# Check for jacket
-    if(json_data.get("list")[dh].get("main").get("temp_min")) is not None:
-        if(json_data.get("list")[dh].get("main").get("temp_min")) < 0.0:
-            if(objectsNeeded[0] != 1):
-                print("Jacket Needed")
-                objectsNeeded[0] = 1
+    # Check for jacket
+        if(json_data.get("list")[dh].get("main").get("temp_min")) is not None:
+            if(json_data.get("list")[dh].get("main").get("temp_min")) < 20.0:
+                if(objectsNeeded[0] != 1):
+                    #on.write("Jacket|")
+                    addObject("Jacket")                    
+                    print("Jacket Needed")
+                    objectsNeeded[0] = 1
 
-# Check for Umberella
-    wc = (len((json_data.get("list")[dh].get("weather"))))
-    if wc > 0:
-        for w in range(0,wc):
-            id = (json_data.get("list")[dh].get("weather")[w].get("id"))  
-            if( id >= 200 and id < 800):
-                if(objectsNeeded[1] != 1):
-                    print("Umberella Needed")
-                    objectsNeeded[1] = 1
+    # Check for Umberella
+        wc = (len((json_data.get("list")[dh].get("weather"))))
+        if wc > 0:
+            for w in range(0,wc):
+                id = (json_data.get("list")[dh].get("weather")[w].get("id"))  
+                if( id >= 200 and id <= 800):
+                    if(objectsNeeded[1] != 1):
+                        #on.write("Umberella|")
+                        addObject("Umbrella")
+                        print("Umbrella Needed")
+                        objectsNeeded[1] = 1
 
-print(objectsNeeded)
+#    on.write("|")
+    print(objectsNeeded)
+
+
+if __name__ == '__main__':
+    #pathON = '/home/pi/ObjectsNeeded.txt'
+#    exists = os.path.isfile(pathON)
+#    if(exists):
+#        on = open(pathON,'a+')
+#    else:
+#        on = open(pathON,'w+')
+    weather()
+
+
 
 #TODO:Make it dependent on current date, and not just on the first 4 entries.
 #    if(json_data.get("list")[dh].get("dt_txt") is not None):
