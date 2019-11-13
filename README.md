@@ -1,3 +1,6 @@
+[![HitCount](http://hits.dwyl.io/RishabhBrajabasi/RishabhBrajabasi/SmartBag.svg)](http://hits.dwyl.io/RishabhBrajabasi/RishabhBrajabasi/SmartBag)
+
+
 # PythonBluetoothServer
 <img src="logo.png" width=500>
 This repository contains support for writing Python programs to serve sockets over Bluetooth.  The code derives from
